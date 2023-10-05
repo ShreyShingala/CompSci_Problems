@@ -34,7 +34,7 @@ def AddImperfectData():
 class Hashmap():
     def __init__(self, size):
         self.size = size
-        self.Hashtable = [None] * size # * round(size * 1.5) KJHKJHKJHKJHKJHKJKJ
+        self.Hashtable = [None] * size 
         
     def PrintTable(self):
         currstring = "["
@@ -68,11 +68,13 @@ class Hashmap():
         key = self.HashFunc(Data)
         linkylist = LinkedList()
         temp = self.Hashtable[key]
-        if Data == linkylist.temp:
+        if Data == temp.datavalue:
             print("Found " + str(Data) + " at index " + str(key))
         else:
-            linkylist = LinkedList()
-            linkylist.Find(Data, self.Hashtable[key])
+            if linkylist.BetterFind(Data, self.Hashtable[key]):
+                print("Found " + str(Data) + " at index " + str(key))
+            else:
+                print(str(Data) + " was not found in the Hashmap")
 
 Hashmap = Hashmap(11)
 
@@ -81,4 +83,3 @@ AddImperfectData()
 
 Hashmap.PrintTable()
 
-Hashmap.FindData("Tim")

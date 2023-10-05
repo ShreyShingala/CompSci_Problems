@@ -47,6 +47,20 @@ class LinkedList():
             temp = temp.nextelem
         
         print(str(data) + " is not in the Linked List")
+        
+    def BetterFind(self, val, head):
+        temp = head
+        i = -1
+        while temp:
+            i += 1
+            data = temp.datavalue
+            if str(data) == str(val):
+                return True
+            temp = temp.nextelem
+        
+        
+        return False
+        
 
     def AddFinalElem(self, val, head):
         temp = head
