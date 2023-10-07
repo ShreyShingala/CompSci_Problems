@@ -24,18 +24,23 @@ class Binary_Tree():
         root.depth = 0
         return root
     
-    def find(val, head, depth=0, curpath=""):
-        
+    def find(self, val, head, depth=0, curpath=""):
         
         if head == None:
             print("Not in list: " + str(val))
-        if head.value == val:
-            print("Found Value:")
-            print("Depth is:" + str(depth))
-            print("The path is:" + curpath)
+        elif head.value == val:
+            curpath += str(head.value)
+            print("Found Value")
+            print("Depth is: " + str(depth))
+            print("The path is: " + curpath)
         else:
-            if
-            
+            curpath += str(head.value) + " -> "
+            if val < head.value:
+                depth += 1
+                self.find(val, head.left, depth, curpath)
+            elif val > head.value:
+                depth += 1
+                self.find(val, head.right, depth, curpath)
         
     
     def determineplace(self, valnew, valog):
@@ -88,3 +93,5 @@ BinTree.add_node(1, Head)
 BinTree.add_node(44, Head)
 BinTree.add_node(9, Head)
 BinTree.print_tree(Head)
+
+BinTree.find(9, Head)
