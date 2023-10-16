@@ -22,7 +22,6 @@ class File(): #Class for a defualt text like file
         
     def copy(self):
         return File(self.name, self.data)
-
         
 class Directory(): #This is a directory class to make a directory
     def __init__(self, name, previous=None):
@@ -63,7 +62,6 @@ class Directory(): #This is a directory class to make a directory
         new_dir = Directory(self.name, self.parent)
         for subdir_name, subdir in self.direcs.items():
             new_subdir = subdir.copy()
-            new_subdir.parent = new_dir
             new_dir.add_directory(new_subdir)
         for file_name, file in self.files.items():
             new_file = file.copy()
@@ -80,25 +78,21 @@ class file_explorer():
      
     def copy(self, name):
         try:
-            temp = self.currentdir.find_directory(name) 
-            self.clipboard = temp.copy()
+            self.clipboard = self.currentdir.direcs[name].copy()
         except KeyError:
-            temp = self.currentdir.find_file(name) 
-            self.clipboard = temp.copy()
-        
+            self.clipboard = self.currentdir.files[name].copy()
+
     def paste(self):
-        if self.clipboard != None:
+        if self.clipboard:
             if isinstance(self.clipboard, Directory):
-                new_dir = self.clipboard
-                new_dir.parent = self.currentdir
+                new_dir = self.clipboard.copy()
                 self.currentdir.add_directory(new_dir)
+                new_dir.parent = self.currentdir
             elif isinstance(self.clipboard, File):
-                new_file = self.clipboard
+                new_file = self.clipboard.copy()
                 self.currentdir.add_file(new_file)
-            
         else:
             print("Copy something first")
-
         
     def addtopath(self):
         self.curpath += "/" + self.currentdir.name
@@ -152,11 +146,11 @@ class file_explorer():
                 continue
             
             elif command[0] == "mf":
-                try:
-                    explorer.create_file(command[1], command)
-                except:
-                    print("Please try again.")
-                    print("Incorrect input: mf (file name) (file content)")
+                #try:
+                explorer.create_file(command[1], command)
+                #except:
+                #    print("Please try again.")
+                #    print("Incorrect input: mf (file name) (file content)")
             
             elif command[0] == "rm":
                 try:
@@ -166,12 +160,10 @@ class file_explorer():
                     print("Incorrect input: rm (file/directory name)")
                     
             elif command[0] == "copy":
-                #try:
-                    explorer.copy(command[1])
-                #except:
-                #    print("Please try again.")
-                #    print("Incorrect input: copy (file/directory name)")
+                
+                explorer.copy(command[1])
             
+        
             elif command[0] == "paste":
                 explorer.paste()
                 
