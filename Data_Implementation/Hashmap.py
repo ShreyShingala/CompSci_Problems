@@ -76,10 +76,10 @@ class Hashmap():
             else:
                 print(str(Data) + " was not found in the Hashmap")
 
-Hashmap = Hashmap(11)
+#Hashmap = Hashmap(11)
 
 #AddPrefectData()
-AddImperfectData()
+#AddImperfectData()
 
-Hashmap.PrintTable()
+#Hashmap.PrintTable()
 
