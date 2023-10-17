@@ -186,32 +186,32 @@ class LinkedList():
         return length
        
 
-linkylist = LinkedList()
+#linkylist = LinkedList()
 
 
-head = linkylist.MakeNode("1", None, None)
-tail = head
-tail = linkylist.AddFinalElem("2", tail)
-tail = linkylist.AddFinalElem("3", tail)
-tail = linkylist.AddFinalElem("4", tail)
-tail = linkylist.AddFinalElem("5", tail)
+#head = linkylist.MakeNode("1", None, None)
+#tail = head
+#tail = linkylist.AddFinalElem("2", tail)
+#tail = linkylist.AddFinalElem("3", tail)
+#tail = linkylist.AddFinalElem("4", tail)
+#tail = linkylist.AddFinalElem("5", tail)
 
-linkylist.PrintList(head)
-print("____________________")
-linkylist.PrintFrom(2, head)
-print("____________________")
-linkylist.GetLength(head)
-print("____________________")
-linkylist.PrintListReverse(tail)
-print("____________________")
-head = linkylist.AddFirstElem("FIRST", head)
-linkylist.PrintList(head)
-print("____________________")
-linkylist.Find(3, head)
-print("____________________")
-linkylist.RemoveAtIndex(3, head)
-linkylist.RemoveCertainVal(2, head)
-linkylist.PrintList(head)
+#linkylist.PrintList(head)
+#print("____________________")
+#linkylist.PrintFrom(2, head)
+#print("____________________")
+#linkylist.GetLength(head)
+#print("____________________")
+#linkylist.PrintListReverse(tail)
+#print("____________________")
+#head = linkylist.AddFirstElem("FIRST", head)
+#linkylist.PrintList(head)
+#print("____________________")
+#linkylist.Find(3, head)
+#print("____________________")
+#linkylist.RemoveAtIndex(3, head)
+#linkylist.RemoveCertainVal(2, head)
+#linkylist.PrintList(head)
 
 #head = elem1
 
