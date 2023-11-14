@@ -1,4 +1,4 @@
-# Good Samples
+# Good Samples, only subtask 1 and 2
 
 specs = str(input()).split(" ")
 
