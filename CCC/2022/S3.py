@@ -18,32 +18,34 @@ def possible():
     print(" ".join(map(str, currentset)))
     done = True
     
-
-for i in range(1, num, 2):
-    if currentgoods < goodsamples:
-        if (goodsamples-1) == currentgoods:
-            if currentset[num-2] == 1 and currentset[num-1] != 2:
-                currentset[num-1] = 2 
-                currentgoods += 1
-                break
-            elif currentset[num-2] == 2 and currentset[num-1] != 1:
-                currentset[num-1] = 1
-                currentgoods += 1
-                break    
-        else:
-            if i == num-1:
-                currentset[i] = 2
-                currentgoods += 1
+if highest == 2:
+    for i in range(1, num, 2):
+        if currentgoods < goodsamples:
+            if (goodsamples-1) == currentgoods:
+                if currentset[num-2] == 1 and currentset[num-1] != 2:
+                    currentset[num-1] = 2 
+                    currentgoods += 1
+                    break
+                elif currentset[num-2] == 2 and currentset[num-1] != 1:
+                    currentset[num-1] = 1
+                    currentgoods += 1
+                    break    
             else:
-                currentset[i] = 2
-                currentgoods += 2
+                if i == num-1:
+                    currentset[i] = 2
+                    currentgoods += 1
+                else:
+                    currentset[i] = 2
+                    currentgoods += 2
 
-    elif currentgoods > goodsamples:
-        break
-    
-    if currentgoods == goodsamples:
-        break
-
+        elif currentgoods > goodsamples:
+            break
+        
+        if currentgoods == goodsamples:
+            break
+else:
+    #todo
+    pass
 
 if currentgoods == goodsamples:
     possible()    
