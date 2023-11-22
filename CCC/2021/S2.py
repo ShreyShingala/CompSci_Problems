@@ -1,34 +1,39 @@
-#Modern Art - TO SLOW
+#Modern Art
 
-row = int(input())
-columns = int(input())
-num = int(input())
+rows = int(input())
+cols = int(input())
+numlines = int(input())
 
-grid = [[0] * columns for _ in range(row)]
+col_swipes = [False] * cols
+row_swipes = [False] * rows
 
-currgold = 0
+for i in range(numlines):
+    line = input().split(" ")
+    index = int(line[1])-1
+    if line[0] == "R":
+        row_swipes[index] = not row_swipes[index]
+    else:
+        col_swipes[index] = not col_swipes[index]
 
-for _ in range(num):
-    coords = str(input()).split(" ")
-    index = int(coords[1])-1
+canva = [[False for j in range(cols)] for i in range(rows)]
 
-    if coords[0] == "R":
-        for j in range(columns):
-            if grid[index][j] == 0:
-                grid[index][j] = 1
-                currgold += 1
-            else:
-                grid[index][j] = 0
-                currgold -= 1
-                
-    elif coords[0] == "C":
-        for j in range(row):
-            if grid[j][index] == 0:
-                grid[j][index] = 1
-                currgold += 1
-            else:
-                grid[j][index] = 0
-                currgold -= 1
-    
-print(currgold)
+for i in range(cols):
+    if col_swipes[i]:
+        for j in range(rows):
+            canva[j][i] = not canva[j][i]
+            
+for i in range(rows):
+    if row_swipes[i]:
+        for j in range(cols):
+            canva[i][j] = not canva[i][j]
+            
+gold = 0
+
+for i in range(rows):
+    for j in range(cols):
+        if canva[i][j]:
+            gold += 1
+
+print(gold)
+
 
