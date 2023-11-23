@@ -19,7 +19,7 @@ for i in range(1, numbermount):
         
         if symettry > currenthighest:
             currenthighest = symettry
-            currprint += " " str(currcropval)
+            currprint += " " + str(currcropval)
         
         
 def symettry(listy):

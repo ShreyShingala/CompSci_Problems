@@ -1,3 +1,5 @@
+# Good Fours and Good Fives
+
 numtoget = int(input())
 curnum = 0
 waystomake = 0
