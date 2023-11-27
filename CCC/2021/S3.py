@@ -3,15 +3,18 @@
 numofpeople = int(input())
 people = []
 bestdistance = float("inf")
+mindistance = float("inf")
+maxdistance = 0
 
 for i in range(numofpeople):
     people.append(list(map(int, input().split(" "))))
+    
+    if people[i][0] < mindistance:
+        mindistance = people[i][0]
+    if people[i][0] > maxdistance:
+        maxdistance = people[i][0]
 
-people.sort(key=lambda x: int(x[0]))
-
-lowest = people[0][0]
-greatest = people[-1][0]
-mid = lowest+greatest//2
+mid = mindistance+maxdistance//2
 
 def curr_dist(point):
     global people
@@ -22,20 +25,11 @@ def curr_dist(point):
         speed = p[1]
         hearing = p[2]
         
+        distance = abs(point - position)
         
-        if point > position:
-            if (position + hearing) > point:
-                continue
-            else:
-                currcheck += ((point - (position + hearing)) * speed)
-        elif point < position:
-            if (position - hearing) < point:
-                continue
-            else:
-                currcheck += (((position - hearing)- point) * speed)
-        if currcheck > bestdistance:
-            break
-        
+        if distance > hearing:
+            currcheck += (distance - hearing) * speed
+
     return currcheck
 
 while True:
