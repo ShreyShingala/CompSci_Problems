@@ -1,55 +1,62 @@
 #Lunch Concert
 
-numofpeople = int(input())
-people = []
+#vars
 bestdistance = float("inf")
 mindistance = float("inf")
 maxdistance = 0
+speed = []
+hearing = []
+position = []
 
+numofpeople = int(input())
 for i in range(numofpeople):
-    people.append(list(map(int, input().split(" "))))
+    people = list(map(int, input().split(" ")))
     
-    if people[i][0] < mindistance:
-        mindistance = people[i][0]
-    if people[i][0] > maxdistance:
-        maxdistance = people[i][0]
-
-mid = mindistance+maxdistance//2
+    position.append(people[0])
+    speed.append(people[1])
+    hearing.append(people[2])
+    if position[i] < mindistance:
+        mindistance = position[i]
+    if position[i] > maxdistance:
+        maxdistance = position[i]
 
 def curr_dist(point):
-    global people
+    global speed, hearing, position
     
     currcheck = 0
-    for p in people:
-        position = p[0]
-        speed = p[1]
-        hearing = p[2]
+    for i in range(numofpeople):
+        pos = position[i]
+        sped = speed[i]
+        hear = hearing[i]
         
-        distance = abs(point - position)
+        distance = abs(point - pos)
         
-        if distance > hearing:
-            currcheck += (distance - hearing) * speed
+        if distance > hear:
+            currcheck += (distance - hear) * sped
 
     return currcheck
 
-while True:
-    left = curr_dist(mid-1)
-    currcheck = curr_dist(mid)
-    right = curr_dist(mid+1)
-    
-    if currcheck < left and currcheck < right:
-        bestdistance = currcheck
-        break
-    elif currcheck == left or currcheck == right:
-        bestdistance = currcheck
-        break
-    elif currcheck <= right:
-        mid = mid-1
-    else:
-        mid = mid +1
-   
 
-            
+left = mindistance
+right = maxdistance
+while left<=right:
+    mid = (left+right)//2
+    
+    left_time = curr_dist(mid-1)
+    currcheck = curr_dist(mid)
+    right_time = curr_dist(mid+1)
+
+    if currcheck < left_time and currcheck < right_time:
+        bestdistance = currcheck
+        break
+    elif currcheck == left_time or currcheck == right_time:
+        bestdistance = currcheck
+        break
+    elif currcheck <= right_time:
+        right = mid-1
+    else:
+        left = mid +1
+        
 
 print(bestdistance)
                 
