@@ -20,3 +20,6 @@ while a<=b:
         b = k-1
     else:
         a = k+1
+        
+        
+        
