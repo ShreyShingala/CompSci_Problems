@@ -19,17 +19,14 @@ for i in range(num_apart):
 num_groups = int(input())
 
 for i in range(num_groups):
-    groups[i] = input().split(" ")
+    group = input().split(" ")
+    
 
-for i in range(num_groups):
-
-    group = groups[i]
     for j in range(num_together):
         have = together[j]
         if have[0] in group and have[1] in group:
             violates -= 1
             
-        
     for k in range(num_apart):
         apartied = apart[k]
         if apartied[0] in group and apartied[1] in group:
